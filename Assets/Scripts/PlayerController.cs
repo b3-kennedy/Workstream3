@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 2.0f;
+    public float speed = 2f;
     public Rigidbody rbody;
     bool alive = true;
     [SerializeField] float jumpForce = 400f;
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
         float height = GetComponent<Collider>().bounds.size.y;
         bool isGrounded = Physics.Raycast(transform.position, Vector3.down, (height/2) + 0.1f , groundMask);
         if(isGrounded)
-        rbody.AddForce(Vector3.up* jumpForce);
+        rbody.AddForce(Vector3.up*jumpForce);
     }
     void Update()
     {
