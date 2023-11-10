@@ -10,7 +10,6 @@ PlayerController playerController;
 
     }
     private void OnCollisionEnter(Collision collision) {
-
         if(collision.gameObject.name=="Player")
         {
             playerController.Die();
