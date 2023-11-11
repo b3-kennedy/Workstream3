@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -10,9 +11,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpForce = 100f;
     [SerializeField] LayerMask groundMask ;
 
+    public PlayerControls playerControls;
+
     public Animator animator;
     
-    
+    private void Awake() {
+        playerControls = new PlayerControls();
+    }
+
+    private void OnEnable() {
+        playerControls.Enable();
+    }
+
+    private void OnDisable() {
+        playerControls.Disable();
+    }
+
     public void FixedUpdate(){
         if(!isAlive) return;
         animator.SetFloat("Speed_f", Mathf.Abs(speed));
@@ -48,7 +62,9 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-       if(Input.GetKeyDown(KeyCode.UpArrow)){
+    
+    //    if(playerControls.Player.DancePadJump.triggered){
+       if(playerControls.Player.Jump.triggered){
         Jump();
        }
        else if(transform.position.y<1){
