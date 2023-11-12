@@ -15,9 +15,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DancePadJump",
+                    "name": "Crouch",
                     "type": "Button",
-                    "id": "29f22936-b389-436f-a774-81b2657ed9c7",
+                    "id": "b826ad1e-50f9-476d-8ff3-d3624cc7680d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -38,12 +38,34 @@
                 },
                 {
                     "name": "",
-                    "id": "f6064092-c283-474c-b668-f2815061b766",
+                    "id": "c88a5bb4-0205-4b21-8b86-e546c4da58fb",
                     "path": "<Joystick>/stick/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DancePadJump",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4f510d85-34fb-4472-92b2-37e42ccf7096",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b638950d-8344-4e9a-af91-06a42e93b5f4",
+                    "path": "<Joystick>/stick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
