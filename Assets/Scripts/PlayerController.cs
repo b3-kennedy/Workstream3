@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -110,7 +111,7 @@ public class PlayerController : MonoBehaviour
     void RestartGame()
     {
         animator.SetBool("Death_b", false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
     public void Jump()
