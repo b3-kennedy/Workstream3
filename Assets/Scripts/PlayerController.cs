@@ -34,12 +34,15 @@ public class PlayerController : MonoBehaviour
 
     public GameObject HealthBarUI;
 
-
+    
     private void Awake()
     {
         playerControls = new PlayerControls();
         colliderOriginalY = collider.size.y;
         colliderOriginalCenter = collider.center.y;
+
+        
+
     }
 
     private void OnEnable()
