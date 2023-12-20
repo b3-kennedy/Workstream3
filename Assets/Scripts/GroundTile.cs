@@ -14,7 +14,7 @@ public class GroundTile : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         groundSpawner.Spawn();
-        Destroy(gameObject, 4);
+        Destroy(gameObject, 20);
     }
     public GameObject obstaclePrefab;
     public GameObject highObstaclePrefab;
