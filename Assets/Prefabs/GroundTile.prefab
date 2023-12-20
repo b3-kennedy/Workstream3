@@ -73,6 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 3099711027965665567, guid: e2ee4fbe657713d4d8874c31baec2fc7, type: 3}
   highObstaclePrefab: {fileID: 294124197041883748, guid: 1decd68889a55b240892348def78ace0, type: 3}
+  FireObstacle: {fileID: 3958507140334837627, guid: 6dcf2582ed3a77344bd96537edabb5d1, type: 3}
 --- !u!1 &7106328109856446293
 GameObject:
   m_ObjectHideFlags: 0
