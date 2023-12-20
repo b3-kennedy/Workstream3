@@ -60,8 +60,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c88a5bb4-0205-4b21-8b86-e546c4da58fb"",
-                    ""path"": ""<Joystick>/stick/up"",
+                    ""id"": ""d2f39671-cb22-449f-ab2a-2219658016a8"",
+                    ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -82,8 +82,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b638950d-8344-4e9a-af91-06a42e93b5f4"",
-                    ""path"": ""<Joystick>/stick/down"",
+                    ""id"": ""1e4cc69f-bd39-4114-9ef0-673f630d4208"",
+                    ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

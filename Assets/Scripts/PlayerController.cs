@@ -86,7 +86,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            //play hit sound
             isAlive = false;
             animator.SetFloat("Speed_f", 0);
             rbody.MovePosition(rbody.position - new Vector3(0, 0, 2.4f));
@@ -127,29 +126,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Jump_b", false);
         }
     }
-    // public void Crouch()
-    // {
-    //      if(playerControls.Player.Crouch.triggered && !isCrouching)
-    //    {
-    //     Debug.Log("crouching");
-    //      animator.SetBool("Crouch_b",true);
-    //     isCrouching=true;
-    //     } else if (playerControls.Player.Crouch.phase == InputActionPhase.Canceled)
-    //     {
-    //         // Debug.Log("key released");
-    //         isCrouching=false;
-    //         animator.SetBool("Crouch_b",false);
-    //     }
-    // }
-    // void OnCrouchPerformed(InputAction.CallbackContext context)
-    // {
-
-
-    //          Debug.Log("key released");
-    //         isCrouching=false;
-    //         animator.SetBool("Crouch_b",false);
-
-    // }
+  
 
     void Update()
     {
@@ -163,12 +140,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Jump_b", false);
         }
-        // if(playerControls.Player.Crouch.triggered && !isCrouching){
-        // Crouch();
-        //    } else {
-        //         // isCrouching=false;
-        //         // animator.SetBool("Crouch_b",false);
-        //    }
+    
 
     }
 }
