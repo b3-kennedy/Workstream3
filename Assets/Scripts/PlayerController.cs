@@ -91,7 +91,8 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("Speed_f", 0);
             rbody.MovePosition(rbody.position - new Vector3(0, 0, 2.4f));
             ParticleSystem hit = Instantiate(hitParticleSystem, new Vector3(0, 2, transform.position.z), Quaternion.identity);
-            //Destroy(hit, 1.5f);
+            Destroy(hit, 1.5f);
+            hit.GetComponent<AudioSource>().Play();
             Invoke("TakeHit", 1.5f);
 
         }
