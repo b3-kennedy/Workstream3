@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class LevelManager : MonoBehaviour
 {
@@ -14,6 +16,10 @@ public class LevelManager : MonoBehaviour
     }
     public void Update()
     {
+        if(Hearts == 0)
+        {
+            SceneManager.LoadScene("EndScene");
+        }
         
     }
     public void UpdateHealthBar(int index)
