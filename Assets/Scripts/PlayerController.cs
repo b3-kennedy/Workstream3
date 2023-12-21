@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 2f;
 
+    public float timer = 0;
+
 
     public Rigidbody rbody;
     bool isAlive = true;
@@ -71,11 +73,24 @@ public class PlayerController : MonoBehaviour
     public void FixedUpdate()
     {
         if (!isAlive) return;
+        timer += Time.deltaTime;
+        if (timer > 10)
+        {
+            Debug.Log(timer);
+            IncreseSpeedByTime();
+            timer = 0;
+        }
         animator.SetFloat("Speed_f", Mathf.Abs(speed));
         Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
         rbody.MovePosition(rbody.position + forwardMove);
+        
 
 
+
+    }
+    void IncreseSpeedByTime()
+    {
+        speed += 0.4f;
     }
 
     public void Die()
@@ -107,11 +122,12 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log("Hearts: " + gameManager.GetComponent<LevelManager>().Hearts);
 
+        speed = 5;
+
     }
     void RestartGame()
     {
         animator.SetBool("Death_b", false);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
     public void Jump()
