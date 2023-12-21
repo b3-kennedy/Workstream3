@@ -27,10 +27,8 @@ public class PlayerMovement : MonoBehaviour
     float colliderOriginalY;
     float colliderOriginalCenter;
 
-    public ParticleSystem hitParticleSystem;
 
-    //public delegate void HitAction();
-    //public static event HitAction hitActionHappened;
+    public AudioSource HitSound;
 
 
 
@@ -54,15 +52,17 @@ public class PlayerMovement : MonoBehaviour
         playerControls.Enable();
         playerControls.Player.Crouch.started += ctx =>
         {
-            //animator.SetBool("Crouch_b", true);
-            collider.height = 1;
-            collider.center = new Vector3(collider.center.x, 0.5f, collider.center.z);
+            animator.SetBool("Crouch_b", true);
+            Debug.Log("crouvhing?");
+            collider.height = 1.5f;
+            //collider.center = new Vector3(collider.center.x, 0.5f, collider.center.z);
         };
         playerControls.Player.Crouch.canceled += ctx =>
         {
             collider.height = 1.97f;
+            Debug.Log("crouvhing done");
             collider.center = new Vector3(collider.center.x, colliderOriginalCenter, collider.center.z);
-            //animator.SetBool("Crouch_b", false);
+            animator.SetBool("Crouch_b", false);
         };
     }
 
@@ -109,11 +109,11 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             isAlive = false;
-            //animator.SetFloat("Speed_f", 0);
+
+            HitSound.Play();
+
             rbody.MovePosition(rbody.position - new Vector3(0, 0, 3f));
-            ParticleSystem hit = Instantiate(hitParticleSystem, new Vector3(1000, 2, transform.position.z), Quaternion.identity);
-            Destroy(hit,1.5f);
-            hit.GetComponent<AudioSource>().Play();
+
             Invoke("TakeHit", 1.5f);
 
         }
@@ -134,10 +134,10 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Jump()
     {
-        float height = GetComponent<Collider>().bounds.size.y;
+        
         Debug.Log("jump");
-        isGrounded = (transform.position.y < 2);
-        Debug.Log(isGrounded);
+        isGrounded = (transform.position.y < 2.80);
+        Debug.Log(transform.position.y);
         if (isGrounded)
         {
             rbody.AddForce(Vector3.up * jumpForce);
