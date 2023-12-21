@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerControls playerControls;
 
-    //public Animator animator;
+    public Animator animator;
 
     public CapsuleCollider collider;
     float colliderOriginalY;
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
             IncreseSpeedByTime();
             timer = 0;
         }
-        //animator.SetFloat("Speed_f", Mathf.Abs(speed));
+       animator.SetBool("Run_b", true);
         Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
         rbody.MovePosition(rbody.position + forwardMove);
 
@@ -98,19 +98,21 @@ public class PlayerMovement : MonoBehaviour
     {
         gameManager.GetComponent<LevelManager>().DamageOnHit();
         int hearts = 5;
+
+        animator.SetBool("Death_b", true);
         if (gameManager.GetComponent<LevelManager>().Hearts <= 0)
         {
             isAlive = false;
-            //animator.SetBool("Death_b", true);
+
             Invoke("RestartGame", 1);
         }
         else
         {
             isAlive = false;
             //animator.SetFloat("Speed_f", 0);
-            rbody.MovePosition(rbody.position - new Vector3(0, 0, 2.4f));
-            ParticleSystem hit = Instantiate(hitParticleSystem, new Vector3(0, 2, transform.position.z), Quaternion.identity);
-            Destroy(hit, 1.5f);
+            rbody.MovePosition(rbody.position - new Vector3(0, 0, 3f));
+            ParticleSystem hit = Instantiate(hitParticleSystem, new Vector3(1000, 2, transform.position.z), Quaternion.identity);
+            Destroy(hit,1.5f);
             hit.GetComponent<AudioSource>().Play();
             Invoke("TakeHit", 1.5f);
 
@@ -122,6 +124,7 @@ public class PlayerMovement : MonoBehaviour
         isAlive = true;
 
         speed = 5;
+        animator.SetBool("Death_b", false);
 
     }
     void RestartGame()
@@ -138,11 +141,11 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
             rbody.AddForce(Vector3.up * jumpForce);
-            //animator.SetBool("Jump_b", true);
+            animator.SetBool("Jump_b", true);
         }
         else
         {
-            //animator.SetBool("Jump_b", false);
+            animator.SetBool("Jump_b", false);
         }
     }
 
@@ -150,14 +153,14 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        //    if(playerControls.Player.DancePadJump.triggered){
+        
         if (playerControls.Player.Jump.triggered)
         {
             Jump();
         }
         else if (transform.position.y < 1)
         {
-            //animator.SetBool("Jump_b", false);
+            animator.SetBool("Jump_b", false);
         }
 
 

@@ -1166,7 +1166,7 @@ GameObject:
   - component: {fileID: 1230169642}
   - component: {fileID: 1230169643}
   m_Layer: 0
-  m_Name: Run (32x32)_1
+  m_Name: SpriteRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1280,6 +1280,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  animator: {fileID: 1270794939}
   collider: {fileID: 1270794935}
   hitParticleSystem: {fileID: 2471529598816639291, guid: cbc70b7833ddfb24ab282a0697499a52, type: 3}
   gameManager: {fileID: 307120289}
