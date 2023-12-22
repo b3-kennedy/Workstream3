@@ -9,6 +9,14 @@ public class EndGameManager : MonoBehaviour
     public Button restartBtn;
     public Button exitBtn;
 
+    public AudioSource endGameMusic;
+    public AudioSource clickSound;
+
+    public void Start()
+    {
+        endGameMusic.Play();
+    }
+
     public void OnEnable()
     {
         restartBtn.onClick.AddListener(RetartGame);
@@ -22,10 +30,12 @@ public class EndGameManager : MonoBehaviour
     }
     public void EndGame()
     {
+        clickSound.Play();
         Application.Quit();
     }
     public void RetartGame()
     {
+        clickSound.Play();
         SceneManager.LoadScene("s");
     }
 }

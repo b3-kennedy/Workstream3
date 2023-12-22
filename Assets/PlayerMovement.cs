@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     public AudioSource HitSound;
-
+    public AudioSource JumpSound;
 
 
     public GameObject gameManager;
@@ -53,14 +53,12 @@ public class PlayerMovement : MonoBehaviour
         playerControls.Player.Crouch.started += ctx =>
         {
             animator.SetBool("Crouch_b", true);
-            Debug.Log("crouvhing?");
             collider.height = 1.5f;
             //collider.center = new Vector3(collider.center.x, 0.5f, collider.center.z);
         };
         playerControls.Player.Crouch.canceled += ctx =>
         {
             collider.height = 1.97f;
-            Debug.Log("crouvhing done");
             collider.center = new Vector3(collider.center.x, colliderOriginalCenter, collider.center.z);
             animator.SetBool("Crouch_b", false);
         };
@@ -141,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
             rbody.AddForce(Vector3.up * jumpForce);
+            //JumpSound.Play();
             animator.SetBool("Jump_b", true);
         }
         else

@@ -8,7 +8,9 @@ public class LevelManager : MonoBehaviour
 {
     public int Hearts = 5;
     public GameObject[] LifeBarStateGameObjects;
-   
+
+    
+
     public void DamageOnHit()
     {
         Hearts--;

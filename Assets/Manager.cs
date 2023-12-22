@@ -8,10 +8,9 @@ using UnityEngine.UI;
 public class Manager : MonoBehaviour
 {
     public Button StartBtn;
-    void Start()
-    {
-        
-    }
+
+    public AudioSource clickSound;
+
    public void OnEnable() {
         StartBtn.onClick.AddListener(StartGame);
     }
@@ -21,11 +20,8 @@ public class Manager : MonoBehaviour
     }
     public void StartGame()
     {
+        clickSound.Play();
          SceneManager.LoadScene("s");
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
