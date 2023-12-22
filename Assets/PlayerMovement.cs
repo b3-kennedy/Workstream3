@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     float colliderOriginalY;
     float colliderOriginalCenter;
 
+    public TMP_Text scoreUIText;
+    int score = 0;
 
     public AudioSource HitSound;
     public AudioSource JumpSound;
@@ -82,7 +84,9 @@ public class PlayerMovement : MonoBehaviour
        animator.SetBool("Run_b", true);
         Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
         rbody.MovePosition(rbody.position + forwardMove);
+        score += Mathf.RoundToInt(Time.deltaTime * 10*speed);
 
+        scoreUIText.text = "Score : " + score;
 
 
 
