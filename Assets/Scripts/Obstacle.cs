@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-PlayerController playerController;
+PlayerMovement playerMovement;
     void Start()
     {
-        playerController= GameObject.FindObjectOfType<PlayerController>();
+        playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
 
     }
     private void OnCollisionEnter(Collision collision) {
-        if(collision.gameObject.name=="Player")
+        if(collision.gameObject.CompareTag("Player"))
         {
-            playerController.Die();
+            playerMovement.Die();
         }
     }
 

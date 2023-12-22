@@ -4,11 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
+
 public class LevelManager : MonoBehaviour
 {
     public int Hearts = 5;
     public GameObject[] LifeBarStateGameObjects;
-   
+
+ 
+    
+
     public void DamageOnHit()
     {
         Hearts--;
@@ -20,6 +24,9 @@ public class LevelManager : MonoBehaviour
         {
             SceneManager.LoadScene("EndScene");
         }
+       
+
+
         
     }
     public void UpdateHealthBar(int index)

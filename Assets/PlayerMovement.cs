@@ -3,11 +3,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using TMPro;
 
-
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 2f;
+    public float speed = 4f;
 
     public float timer = 0;
 
@@ -23,28 +23,29 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator;
 
-    public BoxCollider collider;
+    public CapsuleCollider collider;
     float colliderOriginalY;
     float colliderOriginalCenter;
 
-    public ParticleSystem hitParticleSystem;
+    public TMP_Text scoreUIText;
+    int score = 0;
 
-    //public delegate void HitAction();
-    //public static event HitAction hitActionHappened;
+    public AudioSource HitSound;
+    public AudioSource JumpSound;
 
 
     public GameObject gameManager;
 
     public GameObject HealthBarUI;
 
-    
+
     private void Awake()
     {
         playerControls = new PlayerControls();
-        colliderOriginalY = collider.size.y;
+        colliderOriginalY = collider.height;
         colliderOriginalCenter = collider.center.y;
 
-        
+
 
     }
 
@@ -54,12 +55,12 @@ public class PlayerController : MonoBehaviour
         playerControls.Player.Crouch.started += ctx =>
         {
             animator.SetBool("Crouch_b", true);
-            collider.size = new Vector3(collider.size.x, 1, collider.size.z);
-            collider.center = new Vector3(collider.center.x, 0.5f, collider.center.z);
+            collider.height = 1.5f;
+            //collider.center = new Vector3(collider.center.x, 0.5f, collider.center.z);
         };
         playerControls.Player.Crouch.canceled += ctx =>
         {
-            collider.size = new Vector3(collider.size.x, colliderOriginalY, collider.size.z);
+            collider.height = 1.97f;
             collider.center = new Vector3(collider.center.x, colliderOriginalCenter, collider.center.z);
             animator.SetBool("Crouch_b", false);
         };
@@ -76,14 +77,16 @@ public class PlayerController : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > 10)
         {
-            Debug.Log(timer);
+           
             IncreseSpeedByTime();
             timer = 0;
         }
-        animator.SetFloat("Speed_f", Mathf.Abs(speed));
+       animator.SetBool("Run_b", true);
         Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
         rbody.MovePosition(rbody.position + forwardMove);
-        
+        score += Mathf.RoundToInt(Time.deltaTime * 10*speed);
+
+        scoreUIText.text = "Score : " + score;
 
 
 
@@ -97,20 +100,22 @@ public class PlayerController : MonoBehaviour
     {
         gameManager.GetComponent<LevelManager>().DamageOnHit();
         int hearts = 5;
+
+        animator.SetBool("Death_b", true);
         if (gameManager.GetComponent<LevelManager>().Hearts <= 0)
         {
             isAlive = false;
-            animator.SetBool("Death_b", true);
+
             Invoke("RestartGame", 1);
         }
         else
         {
             isAlive = false;
-            animator.SetFloat("Speed_f", 0);
-            rbody.MovePosition(rbody.position - new Vector3(0, 0, 2.4f));
-            ParticleSystem hit = Instantiate(hitParticleSystem, new Vector3(0, 2, transform.position.z), Quaternion.identity);
-            Destroy(hit, 1.5f);
-            hit.GetComponent<AudioSource>().Play();
+
+            HitSound.Play();
+
+            rbody.MovePosition(rbody.position - new Vector3(0, 0, 3f));
+
             Invoke("TakeHit", 1.5f);
 
         }
@@ -120,25 +125,25 @@ public class PlayerController : MonoBehaviour
     {
         isAlive = true;
 
-        Debug.Log("Hearts: " + gameManager.GetComponent<LevelManager>().Hearts);
-
         speed = 5;
+        animator.SetBool("Death_b", false);
 
     }
     void RestartGame()
     {
-        animator.SetBool("Death_b", false);
+        //animator.SetBool("Death_b", false);
 
     }
     public void Jump()
     {
-        float height = GetComponent<Collider>().bounds.size.y;
-
-        isGrounded = (transform.position.y < 1);
-        Debug.Log(isGrounded);
+        
+        Debug.Log("jump");
+        isGrounded = (transform.position.y < 2.80);
+        Debug.Log(transform.position.y);
         if (isGrounded)
         {
             rbody.AddForce(Vector3.up * jumpForce);
+            //JumpSound.Play();
             animator.SetBool("Jump_b", true);
         }
         else
@@ -146,12 +151,12 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Jump_b", false);
         }
     }
-  
+
 
     void Update()
     {
 
-        //    if(playerControls.Player.DancePadJump.triggered){
+        
         if (playerControls.Player.Jump.triggered)
         {
             Jump();
@@ -160,7 +165,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Jump_b", false);
         }
-    
+
 
     }
 }
