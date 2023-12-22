@@ -299,8 +299,6 @@ MonoBehaviour:
   - {fileID: 1087938240}
   - {fileID: 60223233}
   - {fileID: 992941151}
-  scoreUIText: {fileID: 355694695}
-  score: 0
 --- !u!4 &307120291
 Transform:
   m_ObjectHideFlags: 0
@@ -1393,7 +1391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1270794933
 MonoBehaviour:
   m_ObjectHideFlags: 0
