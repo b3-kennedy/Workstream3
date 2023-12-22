@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
 public class LevelManager : MonoBehaviour
@@ -9,6 +10,9 @@ public class LevelManager : MonoBehaviour
     public int Hearts = 5;
     public GameObject[] LifeBarStateGameObjects;
 
+    public TMP_Text scoreUIText;
+
+    public int score = 0;
     
 
     public void DamageOnHit()
@@ -22,6 +26,11 @@ public class LevelManager : MonoBehaviour
         {
             SceneManager.LoadScene("EndScene");
         }
+        score += Mathf.RoundToInt(Time.deltaTime*100);
+
+        scoreUIText.text = "Score : "+score;
+
+
         
     }
     public void UpdateHealthBar(int index)
