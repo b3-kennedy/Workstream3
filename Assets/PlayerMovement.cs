@@ -7,7 +7,7 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 4f;
+    public float speed = 5f;
 
     public float timer = 0;
 
@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAlive) return;
         timer += Time.deltaTime;
-        if (timer > 10)
+        if (timer > 7)
         {
            
             IncreseSpeedByTime();
@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void IncreseSpeedByTime()
     {
-        speed += 0.4f;
+        speed += 0.27f;
     }
 
     public void Die()
@@ -138,12 +138,11 @@ public class PlayerMovement : MonoBehaviour
     {
         
         Debug.Log("jump");
-        isGrounded = (transform.position.y < 2.80);
+        isGrounded = (transform.position.y < 5);
         Debug.Log(transform.position.y);
         if (isGrounded)
         {
             rbody.AddForce(Vector3.up * jumpForce);
-            //JumpSound.Play();
             animator.SetBool("Jump_b", true);
         }
         else
