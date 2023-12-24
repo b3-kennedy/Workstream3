@@ -7,7 +7,7 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 4f;
+    public float speed = 5f;
 
     public float timer = 0;
 
@@ -27,8 +27,9 @@ public class PlayerMovement : MonoBehaviour
     float colliderOriginalY;
     float colliderOriginalCenter;
 
+    public TMP_Text highcoreUIText;
     public TMP_Text scoreUIText;
-    int score = 0;
+    public static int score = 0;
 
     public AudioSource HitSound;
     public AudioSource JumpSound;
@@ -41,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        score = 0;
         playerControls = new PlayerControls();
         colliderOriginalY = collider.height;
         colliderOriginalCenter = collider.center.y;
@@ -75,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAlive) return;
         timer += Time.deltaTime;
-        if (timer > 10)
+        if (timer > 30)
         {
            
             IncreseSpeedByTime();
@@ -88,12 +90,20 @@ public class PlayerMovement : MonoBehaviour
 
         scoreUIText.text = "Score : " + score;
 
+        if(PlayerPrefs.GetInt("HighScore", 0)< score)
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+        }
+        highcoreUIText.text ="High Score : "+ PlayerPrefs.GetInt("HighScore",0);
+
+
+
 
 
     }
     void IncreseSpeedByTime()
     {
-        speed += 0.4f;
+        speed += 0.15f;
     }
 
     public void Die()
@@ -114,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
 
             HitSound.Play();
 
-            rbody.MovePosition(rbody.position - new Vector3(0, 0, 3f));
+            rbody.MovePosition(rbody.position + new Vector3(0, 0, 2f));
 
             Invoke("TakeHit", 1.5f);
 
@@ -125,7 +135,8 @@ public class PlayerMovement : MonoBehaviour
     {
         isAlive = true;
 
-        speed = 5;
+        if(speed>7)
+            speed -= 1;
         animator.SetBool("Death_b", false);
 
     }
@@ -138,12 +149,11 @@ public class PlayerMovement : MonoBehaviour
     {
         
         Debug.Log("jump");
-        isGrounded = (transform.position.y < 2.80);
+        isGrounded = (transform.position.y < 5);
         Debug.Log(transform.position.y);
         if (isGrounded)
         {
             rbody.AddForce(Vector3.up * jumpForce);
-            //JumpSound.Play();
             animator.SetBool("Jump_b", true);
         }
         else

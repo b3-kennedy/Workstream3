@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4698342753405805863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6031434089866484951}
+  m_Layer: 3
+  m_Name: ObstacleMiddleSpawn (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6031434089866484951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4698342753405805863}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5, y: 0.5, z: -3.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6149929636375583035}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5168794192361946498
 GameObject:
   m_ObjectHideFlags: 0
@@ -36,6 +67,8 @@ Transform:
   - {fileID: 1579078249410705361}
   - {fileID: 7132491398468039162}
   - {fileID: 1746065650843587869}
+  - {fileID: 6031434089866484951}
+  - {fileID: 4302237589540293241}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1346730158112221125
@@ -71,9 +104,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a1f6f82730e64d46b0db7324ef5be76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 3099711027965665567, guid: e2ee4fbe657713d4d8874c31baec2fc7, type: 3}
+  obstaclePrefab: {fileID: 3958507140334837627, guid: d43e9ba8b52ab5741bac0194276d9dfb, type: 3}
   highObstaclePrefab: {fileID: 294124197041883748, guid: 1decd68889a55b240892348def78ace0, type: 3}
   FireObstacle: {fileID: 3958507140334837627, guid: 6dcf2582ed3a77344bd96537edabb5d1, type: 3}
+  secondHighObstaclePrefab: {fileID: 294124197041883748, guid: 9c85e2e0469077a4b9401368c3e627d6, type: 3}
+--- !u!1 &5893650069620703894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4302237589540293241}
+  m_Layer: 3
+  m_Name: ObstacleMiddleSpawn (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4302237589540293241
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5893650069620703894}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5, y: 0.5, z: 3.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6149929636375583035}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7106328109856446293
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +164,7 @@ Transform:
   m_GameObject: {fileID: 7106328109856446293}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 0.5, z: 6.34}
+  m_LocalPosition: {x: -0.06, y: 0.5, z: -8.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -130,7 +195,7 @@ Transform:
   m_GameObject: {fileID: 7971573166440698300}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 3.36}
+  m_LocalPosition: {x: 5, y: 0.5, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -192,7 +257,7 @@ Transform:
   m_GameObject: {fileID: 8630743630237457496}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.14, y: 0.5, z: -0.54}
+  m_LocalPosition: {x: -0.14, y: 0.5, z: 9.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

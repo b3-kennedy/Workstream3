@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class EndGameManager : MonoBehaviour
 {
@@ -12,9 +13,14 @@ public class EndGameManager : MonoBehaviour
     public AudioSource endGameMusic;
     public AudioSource clickSound;
 
+    public TMP_Text highScoreTxt;
+    public TMP_Text scoreTxt;
+
     public void Start()
     {
         endGameMusic.Play();
+        highScoreTxt.text = "Your High Score is : "+PlayerPrefs.GetInt("HighScore", 0);
+        scoreTxt.text = "Score : " + PlayerMovement.score;
     }
 
     public void OnEnable()
