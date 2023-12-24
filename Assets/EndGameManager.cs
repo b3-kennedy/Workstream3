@@ -19,8 +19,8 @@ public class EndGameManager : MonoBehaviour
     public void Start()
     {
         endGameMusic.Play();
-        highScoreTxt.text = "Your High Score : "+PlayerPrefs.GetInt("HighScore", 0);
-        scoreTxt.text = "0";
+        highScoreTxt.text = "Your High Score is : "+PlayerPrefs.GetInt("HighScore", 0);
+        scoreTxt.text = "Score : " + PlayerMovement.score;
     }
 
     public void OnEnable()

@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     public TMP_Text highcoreUIText;
     public TMP_Text scoreUIText;
-    int score = 0;
+    public static int score = 0;
 
     public AudioSource HitSound;
     public AudioSource JumpSound;
