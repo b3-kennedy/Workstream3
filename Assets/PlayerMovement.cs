@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        score = 0;
         playerControls = new PlayerControls();
         colliderOriginalY = collider.height;
         colliderOriginalCenter = collider.center.y;
@@ -76,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAlive) return;
         timer += Time.deltaTime;
-        if (timer > 7)
+        if (timer > 30)
         {
            
             IncreseSpeedByTime();
@@ -102,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void IncreseSpeedByTime()
     {
-        speed += 0.27f;
+        speed += 0.15f;
     }
 
     public void Die()
@@ -123,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
 
             HitSound.Play();
 
-            rbody.MovePosition(rbody.position - new Vector3(0, 0, 3f));
+            rbody.MovePosition(rbody.position + new Vector3(0, 0, 2f));
 
             Invoke("TakeHit", 1.5f);
 
@@ -134,7 +135,8 @@ public class PlayerMovement : MonoBehaviour
     {
         isAlive = true;
 
-        speed = 5;
+        if(speed>7)
+            speed -= 1;
         animator.SetBool("Death_b", false);
 
     }
