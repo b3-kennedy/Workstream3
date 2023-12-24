@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     float colliderOriginalY;
     float colliderOriginalCenter;
 
+    public TMP_Text highcoreUIText;
     public TMP_Text scoreUIText;
     int score = 0;
 
@@ -87,6 +88,14 @@ public class PlayerMovement : MonoBehaviour
         score += Mathf.RoundToInt(Time.deltaTime * 10*speed);
 
         scoreUIText.text = "Score : " + score;
+
+        if(PlayerPrefs.GetInt("HighScore", 0)< score)
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+        }
+        highcoreUIText.text ="High Score : "+ PlayerPrefs.GetInt("HighScore",0);
+
+
 
 
 
